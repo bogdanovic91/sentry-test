@@ -103,7 +103,7 @@ sentry-test/
 - **Expo**: ~51.0.0
 - **React Native**: 0.74.5
 - **React Navigation**: Bottom tabs navigation
-- **Sentry React Native**: ^5.16.0
+- **Sentry React Native**: ~5.24.3
 - **TypeScript**: Type-safe development
 
 ## Important Notes
