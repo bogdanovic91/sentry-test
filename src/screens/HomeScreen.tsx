@@ -75,9 +75,13 @@ const HomeScreen = () => {
   };
 
   const testSentryMessage = () => {
+
+    Sentry.showFeedbackWidget();
     // Send a message to Sentry
-    Sentry.captureMessage('Test Message: This is a test message sent to Sentry', 'info');
-    Alert.alert('Success', 'Message sent to Sentry');
+    // Sentry.captureMessage('Test Message: This is a test message sent to Sentry', 'info');
+    // Alert.alert('Success', 'Message sent to Sentry');
+    Sentry.hideFeedbackButton();
+
   };
 
   const testNativeCrash = () => {
@@ -133,7 +137,7 @@ const HomeScreen = () => {
       <View style={styles.header}>
         <Text style={styles.title}>Sentry Crash Testing</Text>
         <Text style={styles.subtitle}>
-          Test various crash scenarios to see how Sentry captures them
+        You can’t fix what you can’t see. - Nikola Bogdanovic
         </Text>
       </View>
 
@@ -224,12 +228,6 @@ const HomeScreen = () => {
         
         <Text style={styles.warningText}>
           Warning: Native crash will force close the app immediately
-        </Text>
-      </View>
-
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>
-          Make sure to configure your Sentry DSN in App.tsx
         </Text>
       </View>
     </ScrollView>
