@@ -123,107 +123,138 @@ const HomeScreen = () => {
     throw new Error('Test Breadcrumbs: Error with breadcrumb trail');
   };
 
-  const CrashButton = ({ title, onPress, color = '#7b3ff2' }: any) => (
-    <TouchableOpacity 
-      style={[styles.button, { backgroundColor: color }]} 
+  const BUTTON_COLORS = [
+    '#7b3ff2', '#e91e63', '#2196f3', '#00bcd4', '#4caf50',
+    '#8bc34a', '#ff9800', '#ff5722', '#9c27b0', '#3f51b5',
+    '#009688', '#795548', '#607d8b', '#dc3545',
+  ];
+
+  const CrashButton = ({ title, badge, onPress, color = '#7b3ff2' }: any) => (
+    <TouchableOpacity
+      style={[styles.button, { backgroundColor: color }]}
       onPress={onPress}
+      activeOpacity={0.8}
     >
-      <Text style={styles.buttonText}>{title}</Text>
+      <View style={styles.buttonContent}>
+        <Text style={styles.buttonText} numberOfLines={2}>
+          {title}
+        </Text>
+        <View style={styles.pillBadge}>
+          <Text style={styles.pillBadgeText}>{badge}</Text>
+        </View>
+      </View>
     </TouchableOpacity>
   );
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Sentry Crash Testing</Text>
-        <Text style={styles.subtitle}>
-        You can’t fix what you can’t see. - Nikola Bogdanovic
-        </Text>
-      </View>
-
+    <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>JavaScript Errors</Text>
         
-        <CrashButton 
-          title="Undefined Error" 
+        <CrashButton
+          title="Undefined Error"
+          badge="JS"
           onPress={testUndefinedError}
+          color={BUTTON_COLORS[0]}
         />
-        
-        <CrashButton 
-          title="Null Reference Error" 
+
+        <CrashButton
+          title="Null Reference Error"
+          badge="JS"
           onPress={testNullReferenceError}
+          color={BUTTON_COLORS[1]}
         />
-        
-        <CrashButton 
-          title="Throw Error" 
+
+        <CrashButton
+          title="Throw Error"
+          badge="JS"
           onPress={testThrowError}
+          color={BUTTON_COLORS[2]}
         />
-        
-        <CrashButton 
-          title="Async Error" 
+
+        <CrashButton
+          title="Async Error"
+          badge="JS"
           onPress={testAsyncError}
+          color={BUTTON_COLORS[3]}
         />
-        
-        <CrashButton 
-          title="Promise Rejection" 
+
+        <CrashButton
+          title="Promise Rejection"
+          badge="JS"
           onPress={testPromiseRejection}
+          color={BUTTON_COLORS[4]}
         />
-        
-        <CrashButton 
-          title="Type Error" 
+
+        <CrashButton
+          title="Type Error"
+          badge="JS"
           onPress={testTypeError}
+          color={BUTTON_COLORS[5]}
         />
-        
-        <CrashButton 
-          title="Reference Error" 
+
+        <CrashButton
+          title="Reference Error"
+          badge="JS"
           onPress={testReferenceError}
+          color={BUTTON_COLORS[6]}
         />
-        
-        <CrashButton 
-          title="Math Error (Division)" 
+
+        <CrashButton
+          title="Math Error (Division)"
+          badge="JS"
           onPress={testDivisionByZero}
+          color={BUTTON_COLORS[7]}
         />
-        
-        <CrashButton 
-          title="Nested Error" 
+
+        <CrashButton
+          title="Nested Error"
+          badge="JS"
           onPress={testNestedError}
+          color={BUTTON_COLORS[8]}
         />
-        
-        <CrashButton 
-          title="Breadcrumbs + Error" 
+
+        <CrashButton
+          title="Breadcrumbs + Error"
+          badge="JS"
           onPress={testBreadcrumbs}
+          color={BUTTON_COLORS[9]}
         />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Sentry Features</Text>
         
-        <CrashButton 
-          title="Manual Capture Exception" 
+        <CrashButton
+          title="Manual Capture Exception"
+          badge="Sentry"
           onPress={testSentryCapture}
-          color="#28a745"
+          color={BUTTON_COLORS[10]}
         />
-        
-        <CrashButton 
-          title="Send Message to Sentry" 
+
+        <CrashButton
+          title="Send Message to Sentry"
+          badge="Sentry"
           onPress={testSentryMessage}
-          color="#28a745"
+          color={BUTTON_COLORS[11]}
         />
-        
-        <CrashButton 
-          title="Custom Exception + Context" 
+
+        <CrashButton
+          title="Custom Exception + Context"
+          badge="Sentry"
           onPress={testCustomException}
-          color="#28a745"
+          color={BUTTON_COLORS[12]}
         />
       </View>
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Native Crash</Text>
         
-        <CrashButton 
-          title="⚠️ Native Crash (Hard Crash)" 
+        <CrashButton
+          title="⚠️ Native Crash (Hard Crash)"
+          badge="Native"
           onPress={testNativeCrash}
-          color="#dc3545"
+          color={BUTTON_COLORS[13]}
         />
         
         <Text style={styles.warningText}>
@@ -237,39 +268,25 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#1a1a1a',
   },
-  header: {
-    padding: 20,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 14,
-    color: '#666',
-    lineHeight: 20,
+  scrollContent: {
+    paddingTop: 20,
   },
   section: {
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#1a1a1a',
     marginTop: 10,
   },
   sectionTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#333',
+    color: '#fff',
     marginBottom: 15,
   },
   button: {
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 16,
     marginBottom: 12,
     elevation: 2,
     shadowColor: '#000',
@@ -277,11 +294,28 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   buttonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
-    textAlign: 'center',
+    flex: 1,
+    paddingRight: 12,
+  },
+  pillBadge: {
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  pillBadgeText: {
+    color: '#fff',
+    fontSize: 13,
+    fontWeight: '700',
   },
   warningText: {
     fontSize: 12,
@@ -292,7 +326,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#1a1a1a',
     marginTop: 10,
     marginBottom: 20,
   },

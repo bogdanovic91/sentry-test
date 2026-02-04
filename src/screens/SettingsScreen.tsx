@@ -4,14 +4,7 @@ import * as Sentry from '@sentry/react-native';
 
 const SettingsScreen = () => {
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Settings</Text>
-        <Text style={styles.subtitle}>
-          App configuration and information
-        </Text>
-      </View>
-
+    <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>About</Text>
         <View style={styles.infoRow}>
@@ -83,34 +76,20 @@ const SettingsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#1a1a1a',
   },
-  header: {
-    padding: 20,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 14,
-    color: '#666',
-    lineHeight: 20,
+  scrollContent: {
+    paddingTop: 20,
   },
   section: {
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#1a1a1a',
     marginTop: 10,
   },
   sectionTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#333',
+    color: '#fff',
     marginBottom: 15,
   },
   infoRow: {
@@ -118,25 +97,25 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#f0f0f0',
+    borderBottomColor: '#2a2a2a',
   },
   label: {
     fontSize: 16,
-    color: '#666',
+    color: '#999',
   },
   value: {
     fontSize: 16,
-    color: '#333',
+    color: '#fff',
     fontWeight: '500',
   },
   instructionText: {
     fontSize: 14,
-    color: '#666',
+    color: '#999',
     lineHeight: 22,
   },
   footer: {
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#1a1a1a',
     marginTop: 10,
     marginBottom: 20,
   },

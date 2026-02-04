@@ -40,24 +40,23 @@ function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        sceneContainerStyle={{ backgroundColor: "#1a1a1a" }}
         screenOptions={{
-          tabBarActiveTintColor: "#7b3ff2",
-          tabBarInactiveTintColor: "gray",
+          headerShown: false,
+          tabBarStyle: { backgroundColor: "#1a1a1a" },
+          tabBarActiveTintColor: "#00c458",
+          tabBarInactiveTintColor: "#888",
         }}
       >
         <Tab.Screen
           name="Home"
           component={HomeScreen}
-          options={{
-            title: "Home",
-          }}
+          options={{ title: "Home" }}
         />
         <Tab.Screen
           name="Settings"
           component={SettingsScreen}
-          options={{
-            title: "Settings",
-          }}
+          options={{ title: "Settings" }}
         />
       </Tab.Navigator>
     </NavigationContainer>
